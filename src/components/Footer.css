@@ -1,6 +1,21 @@
 .footer {
-  padding: 3rem 1.5rem;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px));
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-left: calc(24px + env(safe-area-inset-left, 0px));
+  padding-right: calc(24px + env(safe-area-inset-right, 0px));
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-left: calc(28px + env(safe-area-inset-left, 0px));
+    padding-right: calc(28px + env(safe-area-inset-right, 0px));
+  }
 }
 
 .footer__inner {
