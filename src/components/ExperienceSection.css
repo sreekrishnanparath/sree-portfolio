@@ -3,6 +3,11 @@
   grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
   gap: 1.5rem 2rem;
   align-items: start;
+  min-width: 0;
+}
+
+.experience__panel {
+  min-width: 0;
 }
 
 .experience__tabs {
@@ -98,10 +103,14 @@
   .experience__tabs {
     flex-direction: row;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 0.75rem;
     border-left: none;
     border-bottom: 2px solid var(--navy-light);
+    padding: 0 0.35rem;
     padding-bottom: 0;
     gap: 0;
+    box-sizing: border-box;
   }
 
   .experience__tab {
