@@ -1,0 +1,40 @@
+.email-side {
+  position: fixed;
+  bottom: 0;
+  right: clamp(1rem, 4vw, 2.5rem);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.email-side__link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-bottom: 0.25rem;
+  transition: color var(--transition), transform 0.15s ease;
+}
+
+.email-side__link:hover,
+.email-side__link:focus-visible {
+  color: var(--green);
+  transform: translateY(-3px);
+}
+
+.email-side__rule {
+  width: 1px;
+  height: 90px;
+  background: var(--slate);
+  opacity: 0.45;
+}
+
+@media (max-width: 1080px) {
+  .email-side {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+.contact__card {
+  max-width: 560px;
+  text-align: left;
+}
+
+.contact__lead {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+}
+
+.contact .btn-outline-lg {
+  background: transparent;
+}
