@@ -1,13 +1,16 @@
 .main-stage {
+  box-sizing: border-box;
+  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 4rem);
-  padding-top: var(--nav-height);
+  /* Horizontal inset is on main#main (see index.css) — avoids duplicate gutters */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
 }
 
 .section {
   padding: 5rem 0;
-  scroll-margin-top: var(--nav-height);
+  scroll-margin-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
 }
 
 .section-heading {
@@ -19,6 +22,8 @@
   font-weight: 600;
   color: var(--lightest-slate);
   white-space: nowrap;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .section-heading::after {
@@ -27,6 +32,8 @@
   height: 1px;
   width: 100%;
   max-width: 280px;
+  min-width: 0;
+  flex: 1;
   background: var(--navy-light);
 }
 
@@ -40,5 +47,17 @@
 @media (max-width: 768px) {
   .section {
     padding: 4rem 0;
+  }
+
+  .section-heading {
+    flex-wrap: wrap;
+    white-space: normal;
+    row-gap: 0.35rem;
+  }
+
+  .section-heading::after {
+    flex-basis: 100%;
+    max-width: none;
+    margin-top: 0.25rem;
   }
 }
