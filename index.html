@@ -2,6 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Custom domain serves this site at / ; /sree-portfolio/ breaks relative ./assets URLs — send users to /. -->
+    <script>
+      (function () {
+        try {
+          var h = location.hostname;
+          if (h.endsWith('github.io')) return;
+          var repo = '/sree-portfolio';
+          var p = location.pathname;
+          if (p === repo || p.startsWith(repo + '/')) {
+            var tail = p === repo ? '/' : p.slice(repo.length);
+            location.replace(location.origin + tail + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
