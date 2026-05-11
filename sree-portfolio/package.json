@@ -1,0 +1,28 @@
+{
+  "name": "sree-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node -e \"const v=+process.version.slice(1).split('.')[0]; if(v<18){console.error('\\nNode 18+ required for Vite 5 (you have '+process.version+'). Try: nvm use\\n'); process.exit(1)}\"",
+    "dev": "vite",
+    "prebuild": "node -e \"const v=+process.version.slice(1).split('.')[0]; if(v<18){console.error('\\nNode 18+ required (you have '+process.version+'). Try: nvm use\\n'); process.exit(1)}\"",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.10"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
