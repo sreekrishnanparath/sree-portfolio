@@ -1,4 +1,5 @@
 import { profile, socialLinks } from '@/data/content';
+import { publicUrl } from '@/publicUrl';
 import './Hero.css';
 
 function IconLinkedIn() {
@@ -93,7 +94,7 @@ export default function Hero() {
           <div className="hero__photo-frame">
             <img
               className="hero__photo"
-              src={profile.profileImageSrc}
+              src={publicUrl(profile.profileImageSrc)}
               alt={profile.profileImageAlt}
               width={320}
               height={320}
