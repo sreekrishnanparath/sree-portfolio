@@ -1,26 +1,20 @@
 /**
- * Absolute URLs for files in `public/` (profile image, résumé PDF).
- * GitHub Pages project sites need `/<repo>/file`, not `/file`.
- * Prefer resolving from the current URL’s first path segment (repo name) so it
- * works even if the bundle was built with `base: '/'`.
+ * URLs for files copied from `public/` into the build root (profile image, résumé PDF).
+ * Resolves relative to the current page so the same build works on
+ * `*.github.io/<repo>/` and on a custom domain like `https://yoursite.com/`.
  */
 export function publicUrl(path: string): string {
   const trimmed = path.replace(/^\/+/, '');
-
   if (typeof window !== 'undefined') {
-    const parts = window.location.pathname.split('/').filter(Boolean);
-    const first = parts[0];
-    if (first && !first.includes('.') && first !== 'assets') {
-      return `${window.location.origin}/${first}/${trimmed}`;
-    }
+    return new URL(trimmed, window.location.href).href;
   }
-
-  let base = import.meta.env.BASE_URL || '/';
-  if (base === './') base = '/';
-  if (!base.endsWith('/')) base = `${base}/`;
-
-  if (base === '/') {
+  const base = import.meta.env.BASE_URL || './';
+  if (base === './') {
+    return `./${trimmed}`;
+  }
+  const normalized = base.endsWith('/') ? base : `${base}/`;
+  if (normalized === '/') {
     return `/${trimmed}`;
   }
-  return `${base}${trimmed}`;
+  return `${normalized}${trimmed}`;
 }
