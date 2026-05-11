@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { navItems, profile } from '@/data/content';
+import { publicUrl } from '@/publicUrl';
 import './Navbar.css';
 
 function scrollToId(id: string) {
@@ -35,7 +36,12 @@ export default function Navbar() {
               </li>
             ))}
           </ol>
-          <a className="nav__resume btn-outline" href={profile.resumeUrl} target="_blank" rel="noreferrer">
+          <a
+            className="nav__resume btn-outline"
+            href={publicUrl(profile.resumeUrl)}
+            target="_blank"
+            rel="noreferrer"
+          >
             Resume
           </a>
         </nav>
